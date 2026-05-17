@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Anti-FOUC theme bootstrap. Runs before paint, applies the .dark class
+      and color-scheme so the page renders with the correct palette on the
+      very first frame (no light-flash for dark-OS visitors).
+
+      Storage key matches next-themes' default ('theme'), so this mirrors
+      whatever ThemeProvider would have applied after hydration.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var systemDark =
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = stored === 'dark' || (stored !== 'light' && systemDark);
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('dark');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.classList.remove('dark');
+            root.style.colorScheme = 'light';
+          }
+        } catch (e) {
+          /* localStorage unavailable (e.g. sandboxed iframe) — let CSS defaults win. */
+        }
+      })();
+    </script>
+
+    <title>Sarah Mitchell | Editorial &amp; Commercial Photographer</title>
+    <meta
+      name="description"
+      content="Editorial and commercial photography by Sarah Mitchell. Visual storytelling, portraits, landscapes, and commissioned work for international publications and brands."
+    />
+    <meta name="author" content="Sarah Mitchell" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="canonical" href="https://sarahmitchell.com/" />
+
+    <meta property="og:site_name" content="Sarah Mitchell Photography" />
+    <meta property="og:title" content="Sarah Mitchell | Editorial &amp; Commercial Photographer" />
+    <meta
+      property="og:description"
+      content="Editorial and commercial photography by Sarah Mitchell. Visual storytelling, portraits, landscapes, and commissioned work for international publications and brands."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sarahmitchell.com/" />
+    <meta
+      property="og:image"
+      content="https://sarahmitchell.com/assets/portfolio/41-1662333085102-f6ae3be21c91.jpg"
+    />
+    <meta property="og:image:alt" content="Sarah Mitchell — editorial and commercial photography portfolio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sarah Mitchell | Editorial &amp; Commercial Photographer" />
+    <meta
+      name="twitter:description"
+      content="Editorial and commercial photography by Sarah Mitchell. Visual storytelling, portraits, landscapes, and commissioned work for international publications and brands."
+    />
+    <meta
+      name="twitter:image"
+      content="https://sarahmitchell.com/assets/portfolio/41-1662333085102-f6ae3be21c91.jpg"
+    />
+    <meta name="twitter:image:alt" content="Sarah Mitchell — editorial and commercial photography portfolio" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sarah Mitchell",
+        "jobTitle": "Editorial & Commercial Photographer",
+        "url": "https://sarahmitchell.com/",
+        "image": "https://sarahmitchell.com/assets/portfolio/40-1585279968680-6606ee6ed134.jpg",
+        "description": "Editorial and commercial photographer specializing in visual storytelling, portraits, landscapes, and commissioned work.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "New York",
+          "addressRegion": "NY",
+          "addressCountry": "US"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "School of Visual Arts"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

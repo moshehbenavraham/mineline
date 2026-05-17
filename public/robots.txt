@@ -1,0 +1,19 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+# Asset directories don't need crawling explicitly disallowed — keep them
+# accessible so image-search bots can index portfolio thumbnails.
+
+Sitemap: https://sarahmitchell.com/sitemap.xml
